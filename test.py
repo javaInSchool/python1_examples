@@ -1,17 +1,13 @@
 file = open("input.txt", "r")
-x,y = map(int,file.readline().split())
-file.close()
-file = open("output.txt", "w")
+file2 = open("output.txt", "a+")
+n = int(file.readline())
 
-
-while x != 0 and y != 0:
-    if x > y:
-        x %= y
-    else:
-        y %= x
-
-gcd = x + y
-
-file.write(str(gcd))
+numbersList = []
+for i in range (n):
+    numbersList.append(file.readline())
+    a,b = map(int,numbersList[i].split())
+    r = a+b
+    file2.write("%d \n" % r)
 
 file.close()
+file2.close()
