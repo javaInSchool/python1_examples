@@ -10,7 +10,7 @@ class Game:
         self.canvas.pack()
         self.window.update()
 
-        self.backgr = PhotoImage (file = "D:/OneDrive - School_3/[2] python/[1] python1/python1_05_02_2021/les12/back.gif")
+        self.backgr = PhotoImage (file = "back.gif")
         w = self.backgr.width()  #дізнатись ширину картинки фону
         h = self.backgr.height()
         for x in range (0, 8):

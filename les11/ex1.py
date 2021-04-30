@@ -8,9 +8,12 @@ class Ball:
         self.stick = stick
         self.id = canvas.create_oval(10,10,80,80, fill = color)
         self.canvas.move(self.id, 300,200)
-        self.xSpeed = 0
+        movesProperties = [-3, -2, -1, 1, 2, 3]
+        random.shuffle(movesProperties)
+        self.xSpeed = movesProperties[0]
         self.ySpeed = 3
         self.hCanvas = self.canvas.winfo_height()
+        self.wCanvas = self.canvas.winfo_width()
         print(self.canvas.winfo_height())
     def draw(self):
         self.canvas.move(self.id, self.xSpeed, self.ySpeed)
@@ -19,6 +22,10 @@ class Ball:
             self.ySpeed = -3
         if ovalCoords[1] <= 0:
             self.ySpeed = 3
+        if ovalCoords[0] <= 0:
+            self.xSpeed = 3
+        if ovalCoords[2] >= self.wCanvas:
+            self.xSpeed = -3
         if self.touchStick(ovalCoords):
             self.ySpeed = -3
 
