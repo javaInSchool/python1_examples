@@ -72,62 +72,17 @@ class StickMan(Sprite):
         self.currentImageAdd = 1
         self.lastTime = time.time()
         self.coordinates = Coordinates()
-        self.jump_count = 0
-        game.canvas.bind_all('<KeyPress-Left>', self.turnLeft)
-        game.canvas.bind_all('<KeyPress-Right>', self.turnRight)
+        game.canvas.bind_all('<KeyPress-Left>', self.moveLeft)
+        game.canvas.bind_all('<KeyPress-Right>', self.moveRight)
         game.canvas.bind_all('<space>', self.jump)
-    def turnLeft(self,evt):
-        if self.y == 0:
-            self.x = -2
-            print(self.x)
-    def turnRight(self,evt):
-        if self.y == 0:
-            self.x = 2
-            print(self.x)
+    def moveLeft(self,evt):
+        self.x = -2
+        print(self.x)
+    def moveRight(self,evt):
+        self.x = 2
+        print(self.x)
     def jump(self,evt):
-        if self.y == 0:
-            self.y = -4
-            self.jump_count = 0
-            print(self.y)
-
-def checkX(c1, c2): #c - об'єкт класу Coordinates
-    if (c1.x1 > c2.x1 and c1.x1 < c2.x2) or (c1.x2 > c2.x1 and c1.x2 < c2.x2) \
-            or (c2.x1 > c1.x1 and c2.x1 < c1.x2) or (c2.x2 > c2.x1 and c2.x2 < c1.x2):  # див картинку у поясненні
-        return True
-    else:
-        return False
-
-def checkY(c1, c2): #c - об'єкт класу Coordinates
-    if (c1.y1 > c2.y1 and c1.y1 < c2.y2) or (c1.y2 > c2.y1 and c1.y2 < c2.y2) \
-            or (c2.y1 > c1.y1 and c2.y1 < c1.y2) or (c2.y2 > c1.y1 and c2.y2 < c1.y2):  # див картинку у поясненні
-        return True
-    else:
-        return False
-def touchLeft(c1, c2):
-    if checkY(c1,c2):
-        if c1.x1 <= c2.x2 and c1.x1 >= c2.x1: # перевірка одна, бо перевіряємо ліворуч
-            return True
-    return False
-
-def touchRight(c1, c2):
-    if checkY(c1,c2):
-        if c1.x2 >= c2.x1 and c1.x2 <= c2.x2: # перевірка одна, бо перевіряємо  праворуч
-            return True
-    return False
-
-def touchTop(c1, c2):
-    if checkX(c1,c2):
-        if c1.y1 <= c2.y2 and c1.y1 >= c2.y1: # перевірка одна, бо перевіряємо зверху
-            return True
-    return False
-
-def touchBottom(y, c1, c2):
-    if checkX(c1,c2):
-        yTemp = c1.y2 + y
-        if yTemp >= c2.y1 and yTemp <= c2.y2:
-            return True
-    return False
-
+        pass
 
 myGame = Game()
 
